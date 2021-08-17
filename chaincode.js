@@ -1,9 +1,8 @@
+const path = require('path');
+const ps = require('ps');
+const { Gateway, Wallets } = require('fabric-network');
 
-import { Gateway, Wallets } from 'fabric-network';
-import * as path from 'path';
-import * as fs from 'fs';
-
-export async function invoke(channelName, chaincodeName, params) {
+exports.invoke = async (channelName, chaincodeName, params) => {
     try {
         // load the network configuration
         const ccpPath = path.resolve('connection-profile.json');
@@ -36,4 +35,4 @@ export async function invoke(channelName, chaincodeName, params) {
         console.error(`Failed to submit transaction: ${error}`);
         process.exit(1);
     }
-}
+};

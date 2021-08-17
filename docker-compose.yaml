@@ -1,14 +1,46 @@
-version: '3'
+# version: '3'
+# networks:
+#   default:
+#     external:
+#       name: pnu
+# services:
+#   client.pusan.ac.kr:
+#     restart: always
+#     container_name: client.pusan.ac.kr
+#     image: maked_node:14.17
+#     working_dir: /usr/app
+#     command: npm start
+#     volumes:
+#       - ../build/crypto-config:~~~
+version: "3"
 networks:
   default:
     external:
       name: pnu
 services:
+  postgresql:
+    image: postgres:13
+    restart: always
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "password"
+      TZ: "Asia/Seoul"
+
   client.pusan.ac.kr:
     restart: always
-    container_name: client.pusan.ac.kr
-    image: maked_node:14.17
-    working_dir: /usr/app
-    command: npm start
+    image: node:14.17
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+      - DB_USER=postgres
+      - DB_PW=password
+      - DB_TYPE=postgres
+      - DB_HOST=postgresql
     volumes:
-      - ../build/crypto-config:~~~
+      - ./:/usr/src/app
+    ports:
+      - 80:3000
+    command: bash -c "npm install && npm start"
