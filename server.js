@@ -42,6 +42,10 @@ function initial() {
 }
 // ***
 
+const chaincode = require('./chaincode');
+
+chaincode.enrollAdmin('management.pusan.ac.kr');
+
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
