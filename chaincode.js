@@ -70,7 +70,7 @@ exports.invoke = async (channelName, chaincodeName, params) => {
     }
 };
 
-exports.invoke = async (channelName, chaincodeName, params) => {
+exports.query = async (channelName, chaincodeName, params) => {
     try {
         const ccpPath = path.resolve('connection-profile.json');
         const ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
