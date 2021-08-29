@@ -12,8 +12,8 @@
         ],
         "peers": [
           "peer0.management.pusan.ac.kr",
-          "peer0.verification1.pusan.ac.kr",
-          "peer0.verification2.pusan.ac.kr",
+          "peer0.verification-01.pusan.ac.kr",
+          "peer0.verification-02.pusan.ac.kr",
           "peer0.trader.pusan.ac.kr"
         ]
       },
@@ -25,8 +25,8 @@
         ],
         "peers": [
           "peer0.management.pusan.ac.kr",
-          "peer0.verification1.pusan.ac.kr",
-          "peer0.verification2.pusan.ac.kr"
+          "peer0.verification-01.pusan.ac.kr",
+          "peer0.verification-02.pusan.ac.kr"
         ]
       },
       "trade": {
@@ -37,8 +37,8 @@
         ],
         "peers": [
           "peer0.management.pusan.ac.kr",
-          "peer0.verification1.pusan.ac.kr",
-          "peer0.verification2.pusan.ac.kr",
+          "peer0.verification-01.pusan.ac.kr",
+          "peer0.verification-02.pusan.ac.kr",
           "peer0.trader.pusan.ac.kr"
         ]
       }
@@ -56,28 +56,28 @@
           "path": "./crypto-config/peerOrganizations/management.pusan.ac.kr/users/Admin@management.pusan.ac.kr/msp/signcerts/Admin@management.pusan.ac.kr-cert.pem"
         }
       },
-      "verification1.pusan.ac.kr": {
-        "mspid": "verification1MSP",
+      "verification-01.pusan.ac.kr": {
+        "mspid": "verification-01MSP",
         "adminPrivateKey": {
-          "path": "./crypto-config/peerOrganizations/verification1.pusan.ac.kr/users/Admin@verification1.pusan.ac.kr/msp/keystore/priv_sk"
+          "path": "./crypto-config/peerOrganizations/verification-01.pusan.ac.kr/users/Admin@verification-01.pusan.ac.kr/msp/keystore/priv_sk"
               },
         "peers": [
-          "peer0.verification1.pusan.ac.kr"
+          "peer0.verification-01.pusan.ac.kr"
         ],
         "signedCert": {
-          "path": "./crypto-config/peerOrganizations/verification1.pusan.ac.kr/users/Admin@verification1.pusan.ac.kr/msp/signcerts/Admin@verification1.pusan.ac.kr-cert.pem"
+          "path": "./crypto-config/peerOrganizations/verification-01.pusan.ac.kr/users/Admin@verification-01.pusan.ac.kr/msp/signcerts/Admin@verification-01.pusan.ac.kr-cert.pem"
         }
       },
-      "verification2.pusan.ac.kr": {
-        "mspid": "verification2MSP",
+      "verification-02.pusan.ac.kr": {
+        "mspid": "verification-02MSP",
         "adminPrivateKey": {
-          "path": "./crypto-config/peerOrganizations/verification2.pusan.ac.kr/users/Admin@verification2.pusan.ac.kr/msp/keystore/priv_sk"
+          "path": "./crypto-config/peerOrganizations/verification-02.pusan.ac.kr/users/Admin@verification-02.pusan.ac.kr/msp/keystore/priv_sk"
               },
         "peers": [
-          "peer0.verification2.pusan.ac.kr"
+          "peer0.verification-02.pusan.ac.kr"
         ],
         "signedCert": {
-          "path": "./crypto-config/peerOrganizations/verification2.pusan.ac.kr/users/Admin@verification2.pusan.ac.kr/msp/signcerts/Admin@verification2.pusan.ac.kr-cert.pem"
+          "path": "./crypto-config/peerOrganizations/verification-02.pusan.ac.kr/users/Admin@verification-02.pusan.ac.kr/msp/signcerts/Admin@verification-02.pusan.ac.kr-cert.pem"
         }
     },
     "trader.pusan.ac.kr": {
@@ -132,22 +132,22 @@
           "path": "./crypto-config/peerOrganizations/management.pusan.ac.kr/peers/peer0.management.pusan.ac.kr/tls/ca.crt"
         }
       },
-      "peer0.verification1.pusan.ac.kr": {
+      "peer0.verification-01.pusan.ac.kr": {
         "url": "grpcs://localhost:8051",
         "grpcOptions": {
-          "ssl-target-name-override": "peer0.verification1.pusan.ac.kr"
+          "ssl-target-name-override": "peer0.verification-01.pusan.ac.kr"
         },
         "tlsCACerts": {
-          "path": "./crypto-config/peerOrganizations/verification1.pusan.ac.kr/peers/peer0.verification1.pusan.ac.kr/tls/ca.crt"
+          "path": "./crypto-config/peerOrganizations/verification-01.pusan.ac.kr/peers/peer0.verification-01.pusan.ac.kr/tls/ca.crt"
         }
       },
-      "peer0.verification2.pusan.ac.kr": {
+      "peer0.verification-02.pusan.ac.kr": {
         "url": "grpcs://localhost:9051",
         "grpcOptions": {
-          "ssl-target-name-override": "peer0.verification2.pusan.ac.kr"
+          "ssl-target-name-override": "peer0.verification-02.pusan.ac.kr"
         },
         "tlsCACerts": {
-          "path": "./crypto-config/peerOrganizations/verification2.pusan.ac.kr/peers/peer0.verification2.pusan.ac.kr/tls/ca.crt"
+          "path": "./crypto-config/peerOrganizations/verification-02.pusan.ac.kr/peers/peer0.verification-02.pusan.ac.kr/tls/ca.crt"
         }
       },
       "peer0.trader.pusan.ac.kr": {
@@ -156,7 +156,7 @@
           "ssl-target-name-override": "peer0.trader.pusan.ac.kr"
         },
         "tlsCACerts": {
-          "path": "./crypto-config/peerOrganizations/trader.pusan.ac.kr/peers/peer1.trader.pusan.ac.kr/tls/ca.crt"
+          "path": "./crypto-config/peerOrganizations/trader.pusan.ac.kr/peers/peer0.trader.pusan.ac.kr/tls/ca.crt"
         }
       }
     },
@@ -175,29 +175,29 @@
           "enrollSecret": "adminpw"
         }
       },
-      "ca.verification1.pusan.ac.kr": {
+      "ca.verification-01.pusan.ac.kr": {
         "url": "https://localhost:8054",
         "httpOptions": {
           "verify": false
         },
         "tlsCACerts": {
-          "path": "./crypto-config/peerOrganizations/verification1.pusan.ac.kr/ca/ca.verification1.pusan.ac.kr-cert.pem"
+          "path": "./crypto-config/peerOrganizations/verification-01.pusan.ac.kr/ca/ca.verification-01.pusan.ac.kr-cert.pem"
         },
-        "caName": "ca.verification1.pusan.ac.kr",
+        "caName": "ca.verification-01.pusan.ac.kr",
         "registrar": {
           "enrollID": "admin",
           "enrollSecret": "adminpw"
         }
       },
-      "ca.verification2.pusan.ac.kr": {
+      "ca.verification-02.pusan.ac.kr": {
         "url": "https://localhost:9054",
         "httpOptions": {
           "verify": false
         },
         "tlsCACerts": {
-          "path": "./crypto-config/peerOrganizations/verification2.pusan.ac.kr/ca/ca.verification2.pusan.ac.kr-cert.pem"
+          "path": "./crypto-config/peerOrganizations/verification-02.pusan.ac.kr/ca/ca.verification-02.pusan.ac.kr-cert.pem"
         },
-        "caName": "ca.verification2.pusan.ac.kr",
+        "caName": "ca.verification-02.pusan.ac.kr",
         "registrar": {
           "enrollID": "admin",
           "enrollSecret": "adminpw"

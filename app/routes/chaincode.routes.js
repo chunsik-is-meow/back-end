@@ -10,13 +10,13 @@ module.exports = function(app) {
     next();
   });
 
-  app.get(
+  app.post(
     "/api/chaincode/query",
     [authJwt.verifyToken],
     controller.query
   );
 
-  app.get(
+  app.post(
     "/api/chaincode/invoke",
     [authJwt.verifyToken],
     controller.invoke
