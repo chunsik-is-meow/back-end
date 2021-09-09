@@ -21,4 +21,11 @@ module.exports = function(app) {
     [authJwt.verifyToken],
     controller.invoke
   );
+
+  //query ai-model info
+  app.post(
+    "/api/chaincode/model",
+    [authJwt.verifyToken],
+    controller.model
+  );
 };

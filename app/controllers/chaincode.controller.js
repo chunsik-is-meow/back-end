@@ -30,3 +30,9 @@ exports.invoke = async (req, res) => {
   res.status(200).send(result);
 };
 
+exports.model = async (req, res) => {
+  var org = 'management.pusan.ac.kr';
+  const result = await Chaincode.query(org, req.body.channel_name, req.body.chaincode_name, req.body.params);
+  res.status(200).send(result);
+};
+
