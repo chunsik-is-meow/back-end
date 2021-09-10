@@ -22,6 +22,20 @@ module.exports = function(app) {
     controller.invoke
   );
 
+  //query data table info
+  app.post(
+    "/api/chaincode/alldata",
+    [authJwt.verifyToken],
+    controller.alldata
+  );
+
+  //query ai-model table info
+  app.post(
+    "/api/chaincode/allmodel",
+    [authJwt.verifyToken],
+    controller.allmodel
+  );
+
   //query ai-model info
   app.post(
     "/api/chaincode/model",
