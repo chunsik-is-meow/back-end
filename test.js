@@ -30,7 +30,6 @@ for(i in data){
 }
 //AIMODEL
 for(var i in aimodel){
-
   aimodel[i]['num']=parseInt(i)+1;
   delete aimodel[i].Contents;
   delete aimodel[i].type;
