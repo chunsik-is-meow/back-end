@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 4000;
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/chaincode.routes')(app);
+require('./app/routes/download.routes')(app);
 
 app.get("/", (req, res) => {
   res.json({ message: "back-end server" });
