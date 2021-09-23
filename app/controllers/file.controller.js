@@ -8,7 +8,10 @@ const upload = async (req, res) => {
     const result = await Chaincode.invoke(org, 'data', 'data', req.body.params);
     res.status(200).send(result);
   } else if (type === 'model') {
-    const result = await Chaincode.invoke(org, 'ai-model', 'ai-model', req.body.params);
+    //TODO yohan
+    const score = 90;
+    const params = [...req.body.params, score]
+    const result = await Chaincode.invoke(org, 'ai-model', 'ai-model', params);
     res.status(200).send(result);
   }
 };
