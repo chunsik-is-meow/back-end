@@ -3,25 +3,33 @@ const fs = require('fs');
 
 const upload = async (req, res) => {
   const org = "management.pusan.ac.kr"
-  const result = await Chaincode.invoke(org, 'data', 'data', req.body.params);
-  res.status(200).send(result);
+  const type = req.params.type;
+  if (type === 'data') {
+    const result = await Chaincode.invoke(org, 'data', 'data', req.body.params);
+    res.status(200).send(result);
+  } else if (type === 'model') {
+    const result = await Chaincode.invoke(org, 'ai-model', 'ai-model', req.body.params);
+    res.status(200).send(result);
+  }
 };
 
 const download = async (req, res) => {
-  // const filename = req.params.filename;
-  const filename = 'test';
-  const version = '1.0';
-  const owner = 'hyoeun';
+  const filename = req.params.filename;
+  const version = req.body.version;
+  const owner = req.body.uploader;
   const downloader = req.body.downloader;
   const type = req.params.type;
   const org = "management.pusan.ac.kr"
-  const params = ['GetCommonDataContents', owner, filename, version, downloader]
-
-  const result = await Chaincode.invoke(org, 'data', 'data', params);
-  const decodingContents = Buffer.from(result, "base64").toString('utf8');
 
   if (type === 'data') {
-    !fs.existsSync("./download") && fs.mkdirSync("./download/data", { recursive: true });
+    const params = ['GetCommonDataContents', owner, filename, version, downloader]
+    const result = await Chaincode.invoke(org, 'data', 'data', params);
+    const decodingContents = Buffer.from(result, "base64").toString('utf8');
+
+    // !fs.existsSync("./download") && fs.mkdirSync("./download/data", { recursive: true });
+    !fs.existsSync("./download") && fs.mkdirSync("./download");
+    !fs.existsSync("./download/data") && fs.mkdirSync("./download/data");
+
     const filePath = "./download/data/"+filename+".csv";
     fs.writeFile(filePath, decodingContents, (err) => {
       if (err) {
@@ -35,7 +43,13 @@ const download = async (req, res) => {
       }
     });
   } else if (type === 'model'){
-    !fs.existsSync("./download") && fs.mkdirSync("./download/ai-model", { recursive: true });
+    const params = ['GetAIModelContents', owner, filename, version, downloader]
+    const result = await Chaincode.invoke(org, 'ai-model', 'ai-model', params);
+    const decodingContents = Buffer.from(result, "base64").toString('utf8');
+
+    !fs.existsSync("./download") && fs.mkdirSync("./download");
+    !fs.existsSync("./download/ai-model") && fs.mkdirSync("./download/ai-model");
+
     const filePath = "./download/ai-model/"+filename+".h5";
     fs.writeFile(filePath, decodingContents, (err) => {
       if (err) {
