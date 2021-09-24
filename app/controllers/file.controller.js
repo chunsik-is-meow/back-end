@@ -2,6 +2,7 @@ const Chaincode = require('../../fabric/chaincode');
 const fs = require('fs');
 
 const upload = async (req, res) => {
+  const filename = req.params.filename;
   const org = "management.pusan.ac.kr"
   const type = req.params.type;
   if (type === 'data') {
@@ -9,6 +10,14 @@ const upload = async (req, res) => {
     res.status(200).send(result);
   } else if (type === 'model') {
     //TODO yohan
+    var options = {
+      scriptPath: path.join(__dirname, "../../evaluate/"),
+      args: [JSON.stringify({ result }), JSON.stringify({ inputData })]
+    };
+    PythonShell.run("evaluate_model.py", options, function(err, data) {
+      res.status(200).json({ data: JSON.parse(data), success: true });
+    });
+
     const score = 90;
     const params = [...req.body.params, score]
     const result = await Chaincode.invoke(org, 'ai-model', 'ai-model', params);

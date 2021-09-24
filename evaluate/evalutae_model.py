@@ -3,6 +3,9 @@ import tensorflow as tf
 from keras.models import load_model
 import test_dataset.data_info as di
 
+result = json.loads(sys.argv[1])['result']
+inputData = json.loads(sys.argv[2])['inputData']
+
 test_model = 'iris_model.h5'
 test_data = 'iris_test.csv'
 batch_size = 32
