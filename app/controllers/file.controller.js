@@ -10,12 +10,15 @@ const upload = async (req, res) => {
     res.status(200).send(result);
   } else if (type === 'model') {
     //TODO yohan
+    key = 'iris'
+    test_model = 'iris_model.h5'
+    score = 0
     var options = {
       scriptPath: path.join(__dirname, "../../evaluate/"),
-      args: [JSON.stringify({ result }), JSON.stringify({ inputData })]
+      args: [JSON.stringify({ key }), JSON.stringify({ test_model })]
     };
-    PythonShell.run("evaluate_model.py", options, function(err, data) {
-      res.status(200).json({ data: JSON.parse(data), success: true });
+    PythonShell.run("evaluate_model.py", options, function(err, score) {
+      res.status(200).json({ score: JSON.parse(score), success: true });
     });
 
     const score = 90;
