@@ -42,4 +42,10 @@ module.exports = function(app) {
     [authJwt.verifyToken],
     controller.model
   );
+
+  app.post(
+    "/api/chaincode/invoke_model",
+    [authJwt.verifyToken],
+    controller.invoke_model
+  );
 };

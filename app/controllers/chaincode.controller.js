@@ -1,6 +1,5 @@
 const Chaincode = require('../../fabric/chaincode');
 
-// TODO orgName
 exports.query = async (req, res) => {
   var org = '';
   if (req.role == "user") {
@@ -34,6 +33,12 @@ exports.invoke = async (req, res) => {
 exports.model = async (req, res) => {
   var org = 'management.pusan.ac.kr';
   const result = await Chaincode.query(org, req.body.channel_name, req.body.chaincode_name, req.body.params);
+  res.status(200).send(result);
+};
+
+exports.invoke_model = async (req, res) => {
+  var org = 'management.pusan.ac.kr';
+  const result = await Chaincode.invoke(org, req.body.channel_name, req.body.chaincode_name, req.body.params);
   res.status(200).send(result);
 };
 
