@@ -15,5 +15,5 @@ chmod +x db.sh
 ### 2.Start
 at back-end directory
 ```
-node server.js
+./server.sh
 ```
